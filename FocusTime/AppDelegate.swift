@@ -49,6 +49,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let settings = dataStore.loadSettings()
         let size = NSSize(width: FocusWindowMetrics.defaultWidth, height: FocusWindowMetrics.defaultHeight)
 
+        window.styleMask.insert(.fullSizeContentView)
         window.setContentSize(size)
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
@@ -57,6 +58,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         window.collectionBehavior.insert(.canJoinAllSpaces)
         window.backgroundColor = .clear
         window.isOpaque = false
+        if #available(macOS 11.0, *) {
+            window.titlebarSeparatorStyle = .none
+        }
 
         [NSWindow.ButtonType.closeButton, .miniaturizeButton, .zoomButton].forEach { buttonType in
             window.standardWindowButton(buttonType)?.isHidden = true

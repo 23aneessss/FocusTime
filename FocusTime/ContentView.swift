@@ -8,18 +8,26 @@ struct ContentView: View {
         ZStack {
             RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius, style: .continuous)
                 .fill(FocusPalette.chrome)
-                .shadow(color: FocusPalette.cardShadow, radius: 18, x: 0, y: 14)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             PixelBackgroundView(
                 phase: viewModel.phase,
                 reduceMotion: viewModel.settings.reduceMotion,
                 style: viewModel.settings.backgroundStyle
             )
-            .padding(8)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             TimerView(viewModel: viewModel)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .frame(width: FocusWindowMetrics.defaultWidth, height: FocusWindowMetrics.defaultHeight)
+        .clipShape(RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius, style: .continuous)
+                .stroke(FocusPalette.chromeBorder.opacity(0.55), lineWidth: 1)
+        )
+        .shadow(color: FocusPalette.cardShadow, radius: 18, x: 0, y: 14)
+        .ignoresSafeArea()
         .overlay(alignment: .topTrailing) {
             SettingsLink {
                 Image(systemName: "slider.horizontal.3")

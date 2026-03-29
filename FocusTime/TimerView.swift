@@ -5,45 +5,36 @@ struct TimerView: View {
     @ObservedObject var viewModel: FocusTimerViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 20)
-
+        VStack(spacing: 22) {
             timerCluster
-
-            Spacer(minLength: 16)
-
             controlsDeck
-                .padding(.bottom, 14)
         }
-        .padding(.horizontal, 18)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .padding(.horizontal, 24)
+        .padding(.vertical, 24)
     }
 
     private var timerCluster: some View {
         ZStack {
-            Circle()
-                .fill(Color.black.opacity(0.20))
-                .frame(width: 228, height: 228)
-                .blur(radius: 18)
-
             PixelRingView(
                 progress: viewModel.progress,
                 phase: viewModel.phase,
                 segments: 42,
-                segmentLength: 17,
+                segmentLength: 16,
                 segmentThickness: 8
             )
-            .frame(width: 214, height: 214)
+            .frame(width: 190, height: 190)
 
-            VStack(spacing: 10) {
+            VStack(spacing: 8) {
                 Text(viewModel.phase.title.uppercased())
-                    .font(FocusTypography.pixel(size: 15))
+                    .font(FocusTypography.pixel(size: 13))
                     .foregroundStyle(FocusPalette.accent(for: viewModel.phase))
-                    .tracking(2.8)
+                    .tracking(2.2)
 
                 Text(viewModel.timeLabel)
-                    .font(FocusTypography.timer(size: 34))
+                    .font(FocusTypography.timer(size: 29))
                     .monospacedDigit()
-                    .tracking(1.4)
+                    .tracking(1.1)
                     .minimumScaleFactor(0.72)
                     .foregroundStyle(FocusPalette.timerText)
                     .shadow(color: Color.black.opacity(0.38), radius: 0, x: 2, y: 2)
@@ -51,66 +42,54 @@ struct TimerView: View {
                     .accessibilityValue(viewModel.timerAccessibilityValue)
             }
         }
-        .frame(maxWidth: .infinity)
+        .frame(width: 190, height: 190)
     }
 
     private var controlsDeck: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 14) {
+            HStack(spacing: 16) {
                 Button(action: viewModel.resetTimer) {
                     PixelAssetButtonLabel(
                         assetNames: breakAwareAssetNames(base: "ButtonRestart"),
                         fallbackTitle: "Restart",
                         kind: .secondary,
                         phase: viewModel.phase,
-                        width: 48,
-                        height: 48
+                        width: 42,
+                        height: 42
                     )
                 }
                 .accessibilityLabel("Restart timer")
                 .buttonStyle(.plain)
 
-                Spacer(minLength: 0)
-
-                Button(action: viewModel.skipPhase) {
+                Button(action: viewModel.toggleTimer) {
                     PixelAssetButtonLabel(
-                        assetNames: breakAwareAssetNames(base: "ButtonSkip"),
-                        fallbackTitle: "Skip",
-                        kind: .secondary,
+                        assetNames: primaryActionAssetNames,
+                        fallbackTitle: viewModel.primaryActionLabel,
+                        kind: .primary,
                         phase: viewModel.phase,
-                        width: 112,
-                        height: 44
+                        width: 144,
+                        height: 42
                     )
                 }
-                .accessibilityLabel("Skip to next phase")
+                .accessibilityLabel(viewModel.primaryActionLabel)
                 .buttonStyle(.plain)
             }
-            .frame(maxWidth: 236)
+            .frame(maxWidth: .infinity, alignment: .center)
 
-            Button(action: viewModel.toggleTimer) {
+            Button(action: viewModel.skipPhase) {
                 PixelAssetButtonLabel(
-                    assetNames: primaryActionAssetNames,
-                    fallbackTitle: viewModel.primaryActionLabel,
-                    kind: .primary,
+                    assetNames: breakAwareAssetNames(base: "ButtonSkip"),
+                    fallbackTitle: "Skip",
+                    kind: .secondary,
                     phase: viewModel.phase,
-                    width: 182,
-                    height: 54
+                    width: 100,
+                    height: 38
                 )
             }
-            .accessibilityLabel(viewModel.primaryActionLabel)
+            .accessibilityLabel("Skip to next phase")
             .buttonStyle(.plain)
         }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 14)
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color.black.opacity(0.20))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(FocusPalette.chromeBorder.opacity(0.38), lineWidth: 1)
-        )
+        .frame(width: 202)
     }
 
     private var primaryActionAssetNames: [String] {

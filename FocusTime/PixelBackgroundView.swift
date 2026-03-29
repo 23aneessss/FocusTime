@@ -6,24 +6,33 @@ struct PixelBackgroundView: View {
     var reduceMotion: Bool
     var style: FocusBackgroundStyle
 
+    private var contentCornerRadius: CGFloat {
+        FocusWindowMetrics.panelCornerRadius
+    }
+
+    private var assetBackdropColor: Color {
+        FocusPalette.skyGradient(for: .now, phase: phase, style: style).first ?? FocusPalette.chrome
+    }
+
     var body: some View {
         if let image = NSImage(named: NSImage.Name(style.assetName)) {
-            Image(nsImage: image)
-                .resizable()
-                .interpolation(.none)
-                .antialiased(false)
-                .scaledToFill()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius - 8, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius - 8, style: .continuous)
-                        .fill(phase == .break ? Color.black.opacity(0.10) : Color.white.opacity(0.02))
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius - 8, style: .continuous)
-                        .stroke(FocusPalette.chromeBorder.opacity(0.25), lineWidth: 1)
-                )
+            ZStack {
+                Rectangle()
+                    .fill(assetBackdropColor)
+
+                Image(nsImage: image)
+                    .resizable()
+                    .interpolation(.none)
+                    .antialiased(false)
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: contentCornerRadius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: contentCornerRadius, style: .continuous)
+                    .fill(phase == .break ? Color.black.opacity(0.10) : Color.white.opacity(0.02))
+            )
         } else {
             Group {
                 if reduceMotion {
@@ -53,11 +62,7 @@ struct PixelBackgroundView: View {
                 drawCloudLayer(on: canvas, size: size, date: context.date, yBase: size.height * 0.66, scale: 1.16, opacity: 0.98)
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius - 8, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: FocusWindowMetrics.panelCornerRadius - 8, style: .continuous)
-                .stroke(FocusPalette.chromeBorder.opacity(0.25), lineWidth: 1)
-        )
+        .clipShape(RoundedRectangle(cornerRadius: contentCornerRadius, style: .continuous))
     }
 
     private func drawSunOrMoon(on canvas: GraphicsContext, size: CGSize, date: Date) {
