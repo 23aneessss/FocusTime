@@ -6,14 +6,79 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		88CAD97AAB2883E614C375AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9240B6B579114FE9C764B7 /* Cocoa.framework */; };
+		D810F5E7BD3E692592B0ADCD /* FocusTimeWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 36AA844B0AE4C7F9CEABAA9E /* FocusTimeWidget.appex */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8FEDA72D677D2616BD7431CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EEC8BA2F7858DB00A0CD63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CDC5D1972DE2CFAEDFD0BE4;
+			remoteInfo = FocusTimeWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC5FD53658F97D22329EE91A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D810F5E7BD3E692592B0ADCD /* FocusTimeWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04EEC8C22F7858DB00A0CD63 /* FocusTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36AA844B0AE4C7F9CEABAA9E /* FocusTimeWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FocusTimeWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9240B6B579114FE9C764B7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		30096A8D6B03B62F30F8ACBE /* Exceptions for "FocusTimeWidget" folder in "FocusTimeWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6CDC5D1972DE2CFAEDFD0BE4 /* FocusTimeWidget */;
+		};
+		6DDCF62C10A1B87D184C9A86 /* Exceptions for "FocusTime" folder in "FocusTime" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Agent/prompt.md,
+				Agent/searchReport.md,
+			);
+			target = 04EEC8C12F7858DB00A0CD63 /* FocusTime */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		04EEC8C42F7858DB00A0CD63 /* FocusTime */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6DDCF62C10A1B87D184C9A86 /* Exceptions for "FocusTime" folder in "FocusTime" target */,
+			);
 			path = FocusTime;
+			sourceTree = "<group>";
+		};
+		E76107A1DB25B436BBC5891B /* FocusTimeWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				30096A8D6B03B62F30F8ACBE /* Exceptions for "FocusTimeWidget" folder in "FocusTimeWidget" target */,
+			);
+			path = FocusTimeWidget;
+			sourceTree = "<group>";
+		};
+		F8110A7BCF52AD9A314DB2D9 /* FocusTime/Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FocusTime/Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +91,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A943BDFA89D169383CF440F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88CAD97AAB2883E614C375AF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -34,6 +107,9 @@
 			children = (
 				04EEC8C42F7858DB00A0CD63 /* FocusTime */,
 				04EEC8C32F7858DB00A0CD63 /* Products */,
+				F8110A7BCF52AD9A314DB2D9 /* FocusTime/Shared */,
+				E76107A1DB25B436BBC5891B /* FocusTimeWidget */,
+				1687B22CD6571E51CCC46A90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,8 +117,25 @@
 			isa = PBXGroup;
 			children = (
 				04EEC8C22F7858DB00A0CD63 /* FocusTime.app */,
+				36AA844B0AE4C7F9CEABAA9E /* FocusTimeWidget.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1687B22CD6571E51CCC46A90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E3296761725792E60A119F3 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E3296761725792E60A119F3 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				CF9240B6B579114FE9C764B7 /* Cocoa.framework */,
+			);
+			name = "OS X";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,20 +148,41 @@
 				04EEC8BE2F7858DB00A0CD63 /* Sources */,
 				04EEC8BF2F7858DB00A0CD63 /* Frameworks */,
 				04EEC8C02F7858DB00A0CD63 /* Resources */,
+				AC5FD53658F97D22329EE91A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9E754AC35031C5A66A588DE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				04EEC8C42F7858DB00A0CD63 /* FocusTime */,
+			);
+			name = FocusTime;
+			productName = FocusTime;
+			productReference = 04EEC8C22F7858DB00A0CD63 /* FocusTime.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6CDC5D1972DE2CFAEDFD0BE4 /* FocusTimeWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB2E8987CC066D3D6AE678D1 /* Build configuration list for PBXNativeTarget "FocusTimeWidget" */;
+			buildPhases = (
+				1D8A089F0D03586F87BAF1BF /* Sources */,
+				4A943BDFA89D169383CF440F /* Frameworks */,
+				365B1C7AC1AF2DF7F907E371 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				04EEC8C42F7858DB00A0CD63 /* FocusTime */,
+				E76107A1DB25B436BBC5891B /* FocusTimeWidget */,
+				F8110A7BCF52AD9A314DB2D9 /* FocusTime/Shared */,
 			);
-			name = FocusTime;
-			packageProductDependencies = (
-			);
-			productName = FocusTime;
-			productReference = 04EEC8C22F7858DB00A0CD63 /* FocusTime.app */;
-			productType = "com.apple.product-type.application";
+			name = FocusTimeWidget;
+			productName = FocusTimeWidget;
+			productReference = 36AA844B0AE4C7F9CEABAA9E /* FocusTimeWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -82,6 +196,11 @@
 				TargetAttributes = {
 					04EEC8C12F7858DB00A0CD63 = {
 						CreatedOnToolsVersion = 26.4;
+						LastSwiftMigration = 2640;
+					};
+					6CDC5D1972DE2CFAEDFD0BE4 = {
+						CreatedOnToolsVersion = 26.4;
+						LastSwiftMigration = 2640;
 					};
 				};
 			};
@@ -100,12 +219,20 @@
 			projectRoot = "";
 			targets = (
 				04EEC8C12F7858DB00A0CD63 /* FocusTime */,
+				6CDC5D1972DE2CFAEDFD0BE4 /* FocusTimeWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04EEC8C02F7858DB00A0CD63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365B1C7AC1AF2DF7F907E371 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +249,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D8A089F0D03586F87BAF1BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9E754AC35031C5A66A588DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FocusTimeWidget;
+			target = 6CDC5D1972DE2CFAEDFD0BE4 /* FocusTimeWidget */;
+			targetProxy = 8FEDA72D677D2616BD7431CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		04EEC8CB2F7858DC00A0CD63 /* Debug */ = {
@@ -250,21 +393,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FocusTime/FocusTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PBFNCNVLAL;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_USER_SELECTED_FILES = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focustime.FocusTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -272,6 +417,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -282,21 +428,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FocusTime/FocusTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PBFNCNVLAL;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_USER_SELECTED_FILES = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.focustime.FocusTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -308,6 +456,72 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
+		};
+		5B1CAD5F039E0D4546FA236E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = FocusTimeWidget/FocusTimeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = PBFNCNVLAL;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FocusTimeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.3;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focustime.FocusTime.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		972D03B2275E974C42C23EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = FocusTimeWidget/FocusTimeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = PBFNCNVLAL;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FocusTimeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.3;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focustime.FocusTime.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -326,6 +540,15 @@
 			buildConfigurations = (
 				04EEC8CE2F7858DC00A0CD63 /* Debug */,
 				04EEC8CF2F7858DC00A0CD63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB2E8987CC066D3D6AE678D1 /* Build configuration list for PBXNativeTarget "FocusTimeWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B1CAD5F039E0D4546FA236E /* Release */,
+				972D03B2275E974C42C23EA2 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
