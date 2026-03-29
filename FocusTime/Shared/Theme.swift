@@ -1,16 +1,16 @@
 import SwiftUI
 
 enum FocusPalette {
-    static let chrome = Color(red: 0.16, green: 0.19, blue: 0.26)
-    static let chromeBorder = Color(red: 0.28, green: 0.32, blue: 0.41)
+    static let chrome = Color(red: 0.09, green: 0.09, blue: 0.17)
+    static let chromeBorder = Color(red: 0.26, green: 0.26, blue: 0.42)
     static let textPrimary = Color(red: 0.96, green: 0.97, blue: 0.99)
-    static let textSecondary = Color(red: 0.77, green: 0.82, blue: 0.90)
+    static let textSecondary = Color(red: 0.73, green: 0.76, blue: 0.88)
     static let panelFill = Color(red: 0.95, green: 0.96, blue: 0.98)
     static let panelStroke = Color(red: 0.86, green: 0.89, blue: 0.94)
     static let cardShadow = Color.black.opacity(0.22)
-    static let widgetBackground = Color(red: 0.13, green: 0.16, blue: 0.21)
-    static let timerText = Color(red: 0.17, green: 0.20, blue: 0.28)
-    static let centerInnerGlow = Color.white.opacity(0.55)
+    static let widgetBackground = Color(red: 0.10, green: 0.09, blue: 0.20)
+    static let timerText = Color(red: 0.97, green: 0.97, blue: 0.99)
+    static let centerInnerGlow = Color.white.opacity(0.08)
 
     static func accent(for phase: TimerPhase) -> Color {
         switch phase {
@@ -24,45 +24,64 @@ enum FocusPalette {
     static func ringActive(for phase: TimerPhase) -> Color {
         switch phase {
         case .focus:
-            return Color(red: 0.24, green: 0.72, blue: 0.99)
+            return Color(red: 0.42, green: 0.56, blue: 1.00)
         case .break:
-            return Color(red: 1.00, green: 0.57, blue: 0.77)
+            return Color(red: 0.98, green: 0.40, blue: 0.82)
         }
     }
 
     static func ringHighlight(for phase: TimerPhase) -> Color {
         switch phase {
         case .focus:
-            return Color(red: 0.72, green: 0.93, blue: 1.00)
+            return Color(red: 0.68, green: 0.78, blue: 1.00)
         case .break:
-            return Color(red: 1.00, green: 0.84, blue: 0.90)
+            return Color(red: 1.00, green: 0.72, blue: 0.91)
         }
     }
 
     static func ringShadow(for phase: TimerPhase) -> Color {
         switch phase {
         case .focus:
-            return Color(red: 0.11, green: 0.38, blue: 0.59)
+            return Color(red: 0.19, green: 0.14, blue: 0.44)
         case .break:
-            return Color(red: 0.63, green: 0.26, blue: 0.39)
+            return Color(red: 0.39, green: 0.15, blue: 0.39)
         }
     }
 
     static func ringInactive(for phase: TimerPhase) -> Color {
         switch phase {
         case .focus:
-            return Color(red: 0.78, green: 0.86, blue: 0.94).opacity(0.28)
+            return Color(red: 0.24, green: 0.23, blue: 0.39)
         case .break:
-            return Color(red: 0.93, green: 0.84, blue: 0.89).opacity(0.26)
+            return Color(red: 0.27, green: 0.21, blue: 0.33)
         }
     }
 
     static func centerFill(for phase: TimerPhase) -> Color {
         switch phase {
         case .focus:
-            return Color.white.opacity(0.96)
+            return Color(red: 0.10, green: 0.12, blue: 0.25).opacity(0.96)
         case .break:
-            return Color(red: 0.99, green: 0.96, blue: 0.98)
+            return Color(red: 0.15, green: 0.09, blue: 0.22).opacity(0.96)
+        }
+    }
+
+    static func sparklePalette(for phase: TimerPhase) -> [Color] {
+        switch phase {
+        case .focus:
+            return [
+                Color.white.opacity(0.96),
+                Color(red: 0.43, green: 0.57, blue: 1.00),
+                Color(red: 0.67, green: 0.39, blue: 0.98),
+                Color(red: 1.00, green: 0.42, blue: 0.83)
+            ]
+        case .break:
+            return [
+                Color.white.opacity(0.96),
+                Color(red: 1.00, green: 0.45, blue: 0.84),
+                Color(red: 0.69, green: 0.38, blue: 0.98),
+                Color(red: 0.48, green: 0.56, blue: 1.00)
+            ]
         }
     }
 
@@ -157,7 +176,7 @@ enum FocusTypography {
             return .custom(fontResourceName, size: size)
         }
 
-        return .system(size: size, weight: .black, design: .rounded)
+        return .system(size: size, weight: .black, design: .monospaced)
     }
 
     static func body(size: CGFloat, weight: Font.Weight = .medium) -> Font {

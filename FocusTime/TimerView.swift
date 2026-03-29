@@ -6,45 +6,57 @@ struct TimerView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            ZStack {
-                PixelRingView(
-                    progress: viewModel.progress,
-                    phase: viewModel.phase,
-                    segments: 52,
-                    segmentLength: 16,
-                    segmentThickness: 7
-                )
-                .frame(width: 160, height: 160)
+            Spacer(minLength: 20)
 
-                VStack(spacing: 8) {
-                    Text(viewModel.phase.title.uppercased())
-                        .font(FocusTypography.phase(size: 11))
-                        .foregroundStyle(FocusPalette.accent(for: viewModel.phase))
-                        .tracking(2.2)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(Color.white.opacity(0.22))
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .stroke(FocusPalette.accent(for: viewModel.phase).opacity(0.35), lineWidth: 1)
-                        )
+            timerCluster
 
-                    Text(viewModel.timeLabel)
-                        .font(FocusTypography.pixel(size: 24))
-                        .minimumScaleFactor(0.7)
-                        .foregroundStyle(FocusPalette.timerText)
-                        .accessibilityLabel("Time remaining")
-                        .accessibilityValue(viewModel.timerAccessibilityValue)
-                }
+            Spacer(minLength: 16)
+
+            controlsDeck
+                .padding(.bottom, 14)
+        }
+        .padding(.horizontal, 18)
+    }
+
+    private var timerCluster: some View {
+        ZStack {
+            Circle()
+                .fill(Color.black.opacity(0.20))
+                .frame(width: 228, height: 228)
+                .blur(radius: 18)
+
+            PixelRingView(
+                progress: viewModel.progress,
+                phase: viewModel.phase,
+                segments: 42,
+                segmentLength: 17,
+                segmentThickness: 8
+            )
+            .frame(width: 214, height: 214)
+
+            VStack(spacing: 10) {
+                Text(viewModel.phase.title.uppercased())
+                    .font(FocusTypography.pixel(size: 15))
+                    .foregroundStyle(FocusPalette.accent(for: viewModel.phase))
+                    .tracking(2.8)
+
+                Text(viewModel.timeLabel)
+                    .font(FocusTypography.timer(size: 34))
+                    .monospacedDigit()
+                    .tracking(1.4)
+                    .minimumScaleFactor(0.72)
+                    .foregroundStyle(FocusPalette.timerText)
+                    .shadow(color: Color.black.opacity(0.38), radius: 0, x: 2, y: 2)
+                    .accessibilityLabel("Time remaining")
+                    .accessibilityValue(viewModel.timerAccessibilityValue)
             }
-            .padding(.top, 30)
+        }
+        .frame(maxWidth: .infinity)
+    }
 
-            Spacer(minLength: 14)
-
-            HStack(spacing: 12) {
+    private var controlsDeck: some View {
+        VStack(spacing: 12) {
+            HStack(spacing: 14) {
                 Button(action: viewModel.resetTimer) {
                     PixelAssetButtonLabel(
                         assetNames: breakAwareAssetNames(base: "ButtonRestart"),
@@ -58,21 +70,22 @@ struct TimerView: View {
                 .accessibilityLabel("Restart timer")
                 .buttonStyle(.plain)
 
+                Spacer(minLength: 0)
+
                 Button(action: viewModel.skipPhase) {
                     PixelAssetButtonLabel(
                         assetNames: breakAwareAssetNames(base: "ButtonSkip"),
                         fallbackTitle: "Skip",
                         kind: .secondary,
                         phase: viewModel.phase,
-                        width: 108,
-                        height: 40
+                        width: 112,
+                        height: 44
                     )
                 }
                 .accessibilityLabel("Skip to next phase")
                 .buttonStyle(.plain)
             }
-
-            Spacer(minLength: 10)
+            .frame(maxWidth: 236)
 
             Button(action: viewModel.toggleTimer) {
                 PixelAssetButtonLabel(
@@ -80,15 +93,24 @@ struct TimerView: View {
                     fallbackTitle: viewModel.primaryActionLabel,
                     kind: .primary,
                     phase: viewModel.phase,
-                    width: 164,
-                    height: 48
+                    width: 182,
+                    height: 54
                 )
             }
             .accessibilityLabel(viewModel.primaryActionLabel)
             .buttonStyle(.plain)
-            .padding(.bottom, 14)
         }
         .padding(.horizontal, 18)
+        .padding(.vertical, 14)
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(Color.black.opacity(0.20))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(FocusPalette.chromeBorder.opacity(0.38), lineWidth: 1)
+        )
     }
 
     private var primaryActionAssetNames: [String] {
@@ -165,7 +187,7 @@ private struct PixelAssetButtonLabel: View {
         case .primary:
             return FocusPalette.accent(for: phase)
         case .secondary:
-            return FocusPalette.panelFill
+            return Color.white.opacity(0.92)
         }
     }
 

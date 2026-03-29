@@ -24,15 +24,15 @@ struct ContentView: View {
             SettingsLink {
                 Image(systemName: "slider.horizontal.3")
                     .font(.system(size: 13, weight: .bold))
-                    .foregroundStyle(FocusPalette.chrome)
-                    .padding(10)
+                    .foregroundStyle(FocusPalette.textPrimary)
+                    .padding(9)
                     .background(
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(FocusPalette.panelFill)
+                            .fill(Color.black.opacity(0.26))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(FocusPalette.panelStroke, lineWidth: 1)
+                            .stroke(FocusPalette.chromeBorder.opacity(0.55), lineWidth: 1)
                     )
             }
             .accessibilityLabel("Open settings")
